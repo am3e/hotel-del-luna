@@ -1,0 +1,2 @@
+//location
+//thank you page
