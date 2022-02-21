@@ -1,6 +1,6 @@
 Hotel Del Luna!
 
-Towards the end of January 2022, I started watching Hotel Del Luna, a korean drama television series on Netflix. The show is about a hotel owner who has serviced this hotel for souls (ghosts) for a milennia as punishment for her actions and in 2019 (when the story takes place) requires a new human manager to take care of the hotel's affairs (taxes, operation tasks). The hotel does not have a website since it is a hotel for ghosts, so I thought it's be fun to create one.
+Towards the end of January 2022, I started watching Hotel Del Luna, a korean drama television series on Netflix. The show is about a hotel owner who has serviced this hotel for souls (ghosts) for a milennia as punishment for her actions and in 2019 (when the story takes place) requires a new human manager to take care of the hotel's affairs (taxes, operation tasks). The hotel does not have a website since it is a hotel for ghosts, so I thought it would be fun to create one.
 
 I am a self taught developer with one year experience writing node scripts, working on the command line reporting to the COO for all things sales operations and customer success. I was let go in November 2021 and so I've thrown myself into front-end development to put my skills into action.
 
