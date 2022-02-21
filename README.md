@@ -15,7 +15,6 @@ features to create:
         - different info available (ex ghosts: support, terms // humans: pricing)
     after ghost registation
         - online portal to check out hotel
-
     after human registration
         - show payment total and filter to payment > payment goes to another page to buy me a coffee :D
 
