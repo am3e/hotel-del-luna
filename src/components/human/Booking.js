@@ -1,19 +1,20 @@
-//check availablity
-//select a room
-//sort by recommended, price, rate type, room type
-
-//complete details
-//confirm email send out?
 
 import React from 'react'
 import {Context} from '../../Context'
-
+import Room from './Room'
 
 export default function Booking() {    
-    const {input} = React.useContext(Context)        
+    const {input, bookedRoom, confirmBooking} = React.useContext(Context)  
+    
 
     return (
-        <h1>{input.firstName}</h1>
+        <div>
+            {
+            input.checkIn && input.checkOut && <h1>Availablity for {input.checkIn} to {input.checkOut}</h1>
+            }
+            <Room />
+            {bookedRoom.length > 0 && <button onClick={confirmBooking}>Continue</button>}
+        </div>
 
     )
 

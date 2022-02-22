@@ -37,7 +37,7 @@ function Reserve() {
                 /></label>
             </section>
             <section className="form">
-                <label>Last Wishes
+                <label>Last Wishes</label>
                 <textarea 
                     id="lastWishes"
                     name="lastWishes"
@@ -45,7 +45,7 @@ function Reserve() {
                     className="lastWishes"
                     value={input.lastWishes}
                     onChange={handleChange}
-                /></label>
+                />
             </section>
             <div>
                 <button 
