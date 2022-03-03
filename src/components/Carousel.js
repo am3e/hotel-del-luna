@@ -1,6 +1,6 @@
 import React from 'react'
 import '../App.css';
-import imagesData from './imagesData.js'
+import imagesData from './data/imagesData.js'
 import {Context} from '../Context'
 
 export default function CarouselItem() {

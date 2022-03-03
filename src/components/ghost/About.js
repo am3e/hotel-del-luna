@@ -1,8 +1,23 @@
 import React from 'react'
 
+import AboutHuman from '../human/AboutHuman'
+
+
 export default function About() {
+
     return (
-        <h1>About</h1>
+            <section className="about wrapper">
+                
+                <AboutHuman />
+
+                
+
+
+
+
+
+
+            </section>
     )
 
 }

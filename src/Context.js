@@ -10,6 +10,7 @@ function ContextProvider({children}) {
     const [modal, setModal] = React.useState(false)
     const [required, setRequired] = React.useState('')
     const [bookedRoom, setBookedRoom] = React.useState([])
+    const [nights, setNights] = React.useState(0)
     const [input, setInput] = React.useState({
         firstName: "",
         lastName: "",
@@ -23,7 +24,6 @@ function ContextProvider({children}) {
     const todayFull = new Date()
     const today = todayFull.toLocaleDateString()
     const thisDay = today.split('/')
-    console.log(thisDay)
     const checkToday = `${thisDay[2]}-${thisDay[0].length === 1 ? '0' + thisDay[0] : thisDay[0]}-${thisDay[1].length === 1 ? '0' + thisDay[1] : thisDay[1]}`
     const inputCheckIn = input.checkIn.split("-")
     let dayIn = inputCheckIn[2]
@@ -37,13 +37,14 @@ function ContextProvider({children}) {
     let inDate = new Date (`${monthIn}/${dayIn}/${yearIn}`)
     let outDate = new Date (`${monthOut}/${dayOut}/${yearOut}`)
 
+    const addIcon = <img className="addIcon" alt="logo" src="./add-circle-line.png"/>
+    const removeIcon = <img className="removeIcon" alt="logo" src="./close-circle-fill.png"/>
 
     function numberOfNights() {
-
         let diffInTime = outDate.getTime() - inDate.getTime()
         let diffInDays = diffInTime / (1000 * 3600 * 24)
-        return diffInDays
-
+        console.log(diffInTime, diffInDays, inDate, outDate)
+        setNights(diffInDays)
     }
 
     function reserveBookedRoom(room) {
@@ -65,6 +66,7 @@ function ContextProvider({children}) {
     function openModal(e) {
         e.stopPropagation()
         setModal(true)
+        console.log('click')
     }
 
     function closeModal() {
@@ -73,56 +75,60 @@ function ContextProvider({children}) {
 
     function submitForm(e) {
         e.preventDefault()
-        if (theme && input.checkIn && input.checkOut) {
-            console.log(input.checkIn, input.checkOut)
-            if (inDate < todayFull) {
-                setRequired('Please select dates for the future')
-                setInput(prevInput => ({
-                    ...prevInput,
-                    checkIn: '',
-                    checkOut: ''
-                }))
-            }
-            if (input.checkIn === input.checkOut) {
-                setRequired('Minimum one night booking required')
-                setInput(prevInput => ({
-                    ...prevInput,
-                    checkOut: ''
-                }))
-            }
-            if (outDate < inDate) {
-                setRequired('Please select dates where check in is before check out')
-                setInput(prevInput => ({
-                    ...prevInput,
-                    checkIn: '',
-                    checkOut: ''
-                }))
-            }
-            if (inDate >= todayFull && input.checkIn !== input.checkOut && outDate > inDate) {
-                setRequired('')
-                setReserve(true)
-                navigate('/room')
-                console.log('submitted')
-                setModal(false)
-            }
-        } else if (theme) {
-            if (!input.checkIn && !input.checkout) {
+        if (bookedRoom > 0) {
+            bookedRoom.map(room => {
+                if (room = e) {
+                    
+                }
+            })
+        }
+
+        if (theme) {
+            console.log(nights)
+            if (nights) {
+                if (input.checkIn === input.checkOut) {
+                    console.log("wow")
+                    setRequired('Minimum one night booking required')
+                    setInput(prevInput => ({
+                        ...prevInput,
+                        checkOut: ''
+                    }))
+                }
+                if (nights && bookedRoom.length === 0) {
+                    console.log("cho")
+                    setRequired('')
+                    setReserve(true)
+                    navigate('/booking')
+                    setModal(false)
+                }
+                if (nights && bookedRoom.length > 0) {
+                    console.log("see")
+                    setRequired('')
+                    setReserve(true)
+                    navigate('/booking')
+                    setModal(false)
+                }
+            } else if (!nights) {
                 setRequired('Please select dates to check availability')
             }
         } else if (!theme) {
             navigate('/confirmation')
             setModal(false)
+            setReserve(true)
         }
 
     }
 
     function handleChange(event) {
         console.log(event)
+
         const {name, value} = event.target
         setInput(prevInput => ({
             ...prevInput,
             [name]: value
         }))
+        
+
     }
 
     function confirmBooking() {
@@ -132,9 +138,12 @@ function ContextProvider({children}) {
 
     React.useEffect(() => {
         console.log('rendered')
-    }, [modal])
+        if (input.checkIn && input.checkOut) {
+            console.log('done it')
+            numberOfNights()
+        }
+    }, [modal, input])
 
-    console.log('hssdcknj',checkToday, today, input.checkIn)
 
     return (
         <Context.Provider value={{
@@ -148,6 +157,9 @@ function ContextProvider({children}) {
             checkToday,
             inDate,
             outDate,
+            nights,
+            addIcon,
+            removeIcon,
             openModal,
             closeModal,
             handleChange,

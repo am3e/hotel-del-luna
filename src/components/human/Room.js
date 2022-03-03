@@ -2,15 +2,14 @@ import React from 'react'
 import '../../App.css';
 import {Context} from '../../Context'
 
-import roomData from '../roomData'
-
+import roomData from '../data/roomData'
 
 export default function Room() {
     const roomArray = roomData.data.room
     const [roomsInfo, setRoomsInfo] = React.useState(roomArray)
     const [rooms, setRooms] = React.useState()
-    const {bookedRoom, reserveBookedRoom, confirmBooking, inDate, outDate} = React.useContext(Context)        
-
+    const {bookedRoom, reserveBookedRoom, addIcon, removeIcon} = React.useContext(Context)        
+    
 
     function handleClick(key) {
         const updatedRoomInfo = roomsInfo.map(room => {
@@ -38,11 +37,11 @@ export default function Room() {
             let booking = bookedRoom.find(booked => booked === room.id)
             return (
                 <div key={room.id} id={room.id} className="room">
-                    <h3 className="room-name">{room.name}</h3>
+                    <h4 className="room-name">{room.name}</h4>
                     <button className="info-btn" onClick={() => {handleClick(room.id)}}>{!room.displayDescription ? 'Hide' : 'See'} Details</button>
-                    <h4 className="room-price">{room.price.toLocaleString("ko-KR", {style: "currency", currency: "KRW"})}</h4>
+                    <h5 className="room-price">{room.price.toLocaleString("ko-KR", {style: "currency", currency: "KRW"})}</h5>
                     <p className={room.displayDescription ? 'show-room-info' : 'hide-room-info'}>{room.roomDescription}</p>
-                    <button className="select-room" onClick={() => {selectRoom(room.id)}}>{booking === room.id ? 'x' : '+'}</button>
+                    <button className="select-room" onClick={() => {selectRoom(room.id)}}>{booking === room.id ? removeIcon : addIcon}</button>
                 </div>
             )
         })
@@ -52,10 +51,8 @@ export default function Room() {
     React.useEffect(getRooms, [bookedRoom, roomsInfo])
 
     return (
-        <>
+        <section className="room-display">
             {rooms}
-            {bookedRoom.length > 0 && inDate && outDate && <button onClick={confirmBooking}>Continue</button>}
-
-        </>
+        </section>
     )
 }

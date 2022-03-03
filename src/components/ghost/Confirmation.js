@@ -7,9 +7,9 @@ export default function Confirmation() {
     const {input} = React.useContext(Context)        
 
     return (
-        <div>
+        <section className="confirmation wrapper">
             <h1>Welcome {input.firstName} to Hotel Del Luna!</h1>
-        </div>
+        </section>
 
     )
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import '../../App.css';
 import {Context} from '../../Context'
-import roomData from '../roomData'
+import roomData from '../data/roomData'
 
 
 export default function Payment() {
@@ -9,7 +9,7 @@ export default function Payment() {
     const [roomsInfo, setRoomsInfo] = React.useState(roomArray)
     const [rooms, setRooms] = React.useState()
     const [totalAmount, setTotalAmount] = React.useState(0)
-    const {input, bookedRoom, removeBookedRoom, numberOfNights} = React.useContext(Context)  
+    const {input, bookedRoom, removeBookedRoom, nights} = React.useContext(Context)  
     const [buttonText, setButtonText] = React.useState('Confirm Reservation')
     const [disableButton, setDisableButton] = React.useState(false)
     const [bookingComplete, setBookingComplete]  = React.useState(false)   
@@ -31,10 +31,9 @@ export default function Payment() {
     function confirmBooked() {
         console.log("rendered", totalAmount)
         let total = 0
-        let totalNights = numberOfNights()
         const showBookings = bookedRoom.map(id => roomsInfo.map(room => {
             if (room.id === id) {
-                total += room.price * totalNights
+                total += room.price * nights
                 return (
                     <div key={room.id} id={room.id} className="room">
                         <h3 className="room-name">{room.name}</h3>
@@ -52,18 +51,18 @@ export default function Payment() {
     React.useEffect(confirmBooked, [bookedRoom, totalAmount])
 
     return (
-        <>
+        <section className="payment">
             <h1>Payment</h1>
             {rooms}
-            {bookedRoom.length > 0 && <h2>Total Amount: {totalAmount}</h2>}
-            {bookedRoom.length > 0 && <button disabled={disableButton} onClick={finalize}>{buttonText}</button>}
+            {bookedRoom.length > 0 && nights && <h2>Total Amount: {totalAmount}</h2>}
+            {bookedRoom.length > 0 && nights && 
+                <button 
+                    disabled={disableButton}
+                    className="pay-button"
+                    onClick={finalize}>
+                    {buttonText}
+                </button>}
             {bookingComplete && <h2>Thank you{input.name ? ' ' + input.name : ''}, your booking is confirmed for {input.checkIn} to {input.checkOut}</h2>}
-        </>
+        </section>
     )
 }
-    // <div key={room.id} id={room.id} className="room">
-    //     <h3 className="room-name">{room.name}</h3>
-    //     <h4 className="room-price">{room.price.toLocaleString("ko-KR", {style: "currency", currency: "KRW"})}</h4>
-    //     <p className={room.displayDescription ? 'show-room-info' : 'hide-room-info'}>{room.roomDescription}</p>
-    //     <button className="select-room" onClick={() => {removeRoom(room.id)}}>{ roomBooked ? 'selected' : '+'}</button>
-    // </div>

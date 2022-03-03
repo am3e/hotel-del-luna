@@ -11,10 +11,10 @@ function ReserveHuman() {
         <div className="modal" onClick={e => e.stopPropagation()}>
             
             <h1>Reservation Details</h1>
-            <form>
-
                 <section className="form">
-                    <label>First Name
+                    <label
+                        htmlFor="firstName"
+                    >First Name</label>
                     <input 
                         id="firstName"
                         type="text"
@@ -23,8 +23,12 @@ function ReserveHuman() {
                         className="firstName"
                         value={input.firstName}
                         onChange={handleChange}
-                    /></label>
-                    <label>Last Name
+                    />
+                </section>
+                <section className="form">
+                    <label
+                        htmlFor="lastName"
+                    >Last Name</label>
                     <input 
                         id="lastName"
                         type="text"
@@ -33,8 +37,12 @@ function ReserveHuman() {
                         className="lastName"
                         value={input.lastName}
                         onChange={handleChange}
-                    /></label>
-                    <label>Email Address
+                    />
+                </section>
+                <section className="form">
+                    <label
+                        htmlFor="email"
+                    >Email Address</label>
                     <input 
                         id="email"
                         type="email"
@@ -43,11 +51,12 @@ function ReserveHuman() {
                         className="email"
                         value={input.email}
                         onChange={handleChange}
-                    /></label>
+                    />
                 </section>
-
                 <section className="form">
-                    <label>Check In
+                    <label
+                        htmlFor="checkIn"
+                    >Check In</label>
                     <input 
                         id="checkIn"
                         type="date"
@@ -57,8 +66,12 @@ function ReserveHuman() {
                         onChange={handleChange}
                         min={checkToday}
                         required
-                    /></label>
-                    <label>Check Out
+                    />
+                </section>
+                <section className="form">
+                    <label
+                        htmlFor="checkOut"
+                    >Check Out</label>
                     <input 
                         id="checkOut"
                         type="date"
@@ -68,7 +81,7 @@ function ReserveHuman() {
                         onChange={handleChange}
                         min={input.checkIn}
                         required
-                    /></label>
+                    />
                 </section>
                 <p className="alert">{required}</p>
                 <div>
@@ -81,7 +94,6 @@ function ReserveHuman() {
                         className="submit-res-btn"
                         onClick={submitForm}>Submit</button>
                 </div>
-            </form>
         </div>
     )
 }

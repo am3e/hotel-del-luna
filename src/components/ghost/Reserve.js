@@ -13,7 +13,9 @@ function Reserve() {
             <h1>Reservation Details</h1>
 
             <section className="form">
-                <label>First Name
+                <label
+                    htmlFor="firstName"
+                >First Name</label>
                 <input 
                     id="firstName"
                     type="text"
@@ -22,10 +24,12 @@ function Reserve() {
                     className="firstName"
                     value={input.firstName}
                     onChange={handleChange}
-                /></label>
+                />
             </section>
             <section className="form">
-                <label>Date of Death
+                <label
+                    htmlFor="dateOfDeath"
+                >Date of Death</label>
                 <input 
                     id="dateOfDeath"
                     type="date"
@@ -34,10 +38,12 @@ function Reserve() {
                     className="dateOfDeath"
                     value={input.dateOfDeath}
                     onChange={handleChange}
-                /></label>
+                />
             </section>
             <section className="form">
-                <label>Last Wishes</label>
+                <label
+                    htmlFor="lastWishes"
+                >Last Wishes</label>
                 <textarea 
                     id="lastWishes"
                     name="lastWishes"
@@ -52,10 +58,6 @@ function Reserve() {
                     aria-label="cancel reseveration"
                     className="cancel-res-btn"
                     onClick={closeModal}>Cancel</button>
-                <button 
-                    aria-label="submit reseveration"
-                    className="submit-res-btn"
-                    onClick="">Add Guest</button>
                 <button 
                     aria-label="submit reseveration"
                     className="submit-res-btn"

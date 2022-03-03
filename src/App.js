@@ -2,7 +2,7 @@ import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from "styled-components"
 import { GlobalStyles } from './components/GlobalStyles';
-import { lightTheme, darkTheme } from './components/Themes';
+import {humanTheme, ghostTheme } from './components/Themes';
 import {Context} from './Context'
 import './App.css';
 import Footer from './components/Footer'
@@ -20,14 +20,14 @@ import Pricing from './components/human/Pricing'
 import Payment from './components/human/Payment'
 import AboutHuman from './components/human/AboutHuman'
 import Careers from './components/human/Careers'
-import Room from './components/human/Room'
+import Booking from './components/human/Booking'
 
 function App() {
   const {closeModal, theme} = React.useContext(Context)
 
   return (
-    <div onClick={closeModal}>
-      <ThemeProvider theme={theme ? lightTheme : darkTheme}>
+    <div onClick={closeModal} className="app">
+      <ThemeProvider theme={theme ? humanTheme : ghostTheme}>
         <GlobalStyles />
         <Nav />
         <Routes>
@@ -39,13 +39,10 @@ function App() {
           <Route path="/support" element={<Support />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/about" element={theme ? <AboutHuman /> : <About />} />
-          <Route path="/about" element={<Careers />} />
-          <Route path="/room" element={<Room />} />
+          <Route path="/careers" element={<Careers />} />
+          <Route path="/booking" element={<Booking />} />
           <Route path="/confirmation" element={<Confirmation />} />
           <Route path="/payment" element={<Payment />} />
-
-
-
         </Routes>
         <Footer />
       </ThemeProvider>

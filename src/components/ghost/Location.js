@@ -2,6 +2,9 @@ import React from 'react'
 
 export default function Location() {
     return (
-        <h1>Location</h1>
+        <section className="about wrapper">
+            <h1>Location</h1>
+            <img src="" alt="" />
+        </section>
     )
 }
