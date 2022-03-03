@@ -4,8 +4,8 @@ import {Context} from '../Context'
 export default function Toggler() {
     const {theme, changeTheme} = React.useContext(Context)
 
-    const ghost = <img className="ghost" alt="logo" src="./ghost-line.png"/>
-    const human = <img className="human" alt="logo" src="./user-fill.png"/>
+    const ghost = <img className="ghost" alt="ghost" src="./ghost-line.png"/>
+    const human = <img className="human" alt="human" src="./user-3-line.png"/>
 
 
     return (
