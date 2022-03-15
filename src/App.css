@@ -22,7 +22,7 @@
   --fs-h2: 2rem;
   --fs-h3: 1.5rem;
   --fs-h4: 0.85rem;
-  --fs-body: 0.65rem;
+  --fs-body: 0.85rem;
   --fs-small: 0.45rem;
   --fs-link: 1.6rem;
   --fs-btn: 0.70rem;  
@@ -111,6 +111,17 @@ button {
   height: 2.5em;
   text-decoration: none;
   z-index: 1;
+}
+.check {
+  display: flex;
+  width: 400px;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.devi {
+  font-size: var(--fs-h1);
+  margin: 0.5em;
 }
 
 .continue-on-button,
@@ -301,7 +312,7 @@ ul li {
   width: 1.625rem;
   left: 0.25rem;
   bottom: 0.25rem;
-  background-color: var(--clr-white);
+  background-color: var(--clr-toggle);
   -webkit-transition: .4s;
   transition: .4s;
   border-radius: 50%;
@@ -309,11 +320,11 @@ ul li {
 }
 
 input:checked + .slider {
-  background-color: var(--clr-toggle);
+  background-color: var(--clr-white);
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 0.063rem var(--clr-toggle);
+  box-shadow: 0 0 0.063rem var(--clr-white);
 }
 
 input:checked + .slider:before {
@@ -381,7 +392,7 @@ span {
 
   .carousel .carousel-item img {
     width: 100%;
-    object-fit: cover;
+    
   }
 
   .carousel .carousel-actions {
@@ -427,7 +438,7 @@ span {
 }
 
 .wrapper {
-  margin: 0 4px;
+  margin: 0 4em;
 }
 
 .room {
@@ -455,6 +466,7 @@ span {
   display: block;
   text-align: left;
   background-color: var(--clr-white);
+  color: var(--clr-black);
   font-size: var(--fs-body-min);
   padding: 2em;
   margin: 1em 0 0 0;
@@ -482,6 +494,7 @@ span {
 }
 .room-price {
   grid-area: price;
+  font-size: var(--fs-h4);
 }
 .select-room {
   grid-area: selector;
