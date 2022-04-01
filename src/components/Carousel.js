@@ -15,7 +15,7 @@ export default function CarouselItem() {
         console.log(selectImage, "select")
         setImage(() => (
             <div key={selectImage.id} id={selectImage.id} className={`carousel-item visible`}>
-                <img src={selectImage.url} alt={selectImage.name} />
+                <img className="fill-img" src={selectImage.url} alt={selectImage.name} />
             </div>
         ))
     }

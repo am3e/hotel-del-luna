@@ -16,6 +16,7 @@ export const humanTheme = {
     submitButtonFont: '',
     hoverModalBkgd: 'goldenrod',
     hoverModalFont: 'darkgreen',
+    hotelTitle: 'black'
   }
   
   export const ghostTheme = {
@@ -36,6 +37,7 @@ export const humanTheme = {
     submitButtonFont: 'black',
     hoverModalBkgd: 'white',
     hoverModalFont: 'goldenrod',
+    hotelTitle: 'white'
   }
 
 

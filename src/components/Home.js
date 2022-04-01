@@ -6,7 +6,7 @@ export default function Home() {
     const {theme} = React.useContext(Context)
 
     const url = theme ? './images/regular.png' : './images/hotel-sign.png'
-    const mainImage = <img src={url} alt="Hotel Del Luna" />
+    const mainImage = <img className="main-img" src={url} alt="Hotel Del Luna" />
     return (
         <>
             {mainImage}

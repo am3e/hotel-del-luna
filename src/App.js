@@ -18,7 +18,6 @@ import Confirmation from './components/ghost/Confirmation'
 
 import Pricing from './components/human/Pricing'
 import Payment from './components/human/Payment'
-import AboutHuman from './components/human/AboutHuman'
 import Careers from './components/human/Careers'
 import Booking from './components/human/Booking'
 
@@ -26,26 +25,29 @@ function App() {
   const {closeModal, theme} = React.useContext(Context)
 
   return (
-    <div onClick={closeModal} className="app">
+    <div onClick={closeModal}>
       <ThemeProvider theme={theme ? humanTheme : ghostTheme}>
         <GlobalStyles />
+        <div className="app">
         <Nav />
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/location" element={<Location />} />
-          <Route path="/amenities" element={<Amenities />} />
-          <Route path="/pricing" element={<Pricing />} />
-          <Route path="/support" element={<Support />} />
-          <Route path="/terms" element={<Terms />} />
-          <Route path="/about" element={theme ? <AboutHuman /> : <About />} />
-          <Route path="/careers" element={<Careers />} />
-          <Route path="/booking" element={<Booking />} />
-          <Route path="/confirmation" element={<Confirmation />} />
-          <Route path="/payment" element={<Payment />} />
-        </Routes>
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/location" element={<Location />} />
+            <Route path="/amenities" element={<Amenities />} />
+            <Route path="/pricing" element={<Pricing />} />
+            <Route path="/support" element={<Support />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/careers" element={<Careers />} />
+            <Route path="/booking" element={<Booking />} />
+            <Route path="/welcome" element={<Confirmation />} />
+            <Route path="/payment" element={<Payment />} />
+          </Routes>
+        </div>
         <Footer />
       </ThemeProvider>
+      
     </div>
     
   )

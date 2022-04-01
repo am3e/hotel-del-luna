@@ -17,7 +17,8 @@ export default function Nav() {
         <>
             <nav>
                 <div className="theme-section">
-                    <Link to="/home" className="logo" ><img className="full-moon" alt="logo" src="./logo192.png" /></Link>
+                    
+                    <Link to="/home" className="logo" ><img className="full-moon" alt="logo" src="./hotel-logo.png" /><span className="hotel-title">Hotel Del Luna</span></Link>
                     <Toggler />
                 </div>
                 
@@ -26,13 +27,7 @@ export default function Nav() {
                     {!theme && <li><Link to="/location">Location</Link></li>}
                     {!theme && <li><Link to="/amenities">Amenities</Link></li>}
                     </ul>
-                    {!nights && bookedRoom.length === 0 && <button 
-                        className="reserve-button" 
-                        onClick={openModal}
-                        id={"open-modal"}>
-                        Reserve
-                    </button>}
-                    {findOut && <button 
+                    {(!nights && bookedRoom.length === 0 || findOut) && <button 
                         className="reserve-button" 
                         onClick={openModal}
                         id={"open-modal"}>

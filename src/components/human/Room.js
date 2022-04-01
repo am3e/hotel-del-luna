@@ -8,7 +8,7 @@ export default function Room() {
     const roomArray = roomData.data.room
     const [roomsInfo, setRoomsInfo] = React.useState(roomArray)
     const [rooms, setRooms] = React.useState()
-    const {bookedRoom, reserveBookedRoom, addIcon, removeIcon} = React.useContext(Context)        
+    const {bookedRoom, reserveBookedRoom, removeBookedRoom,addIcon, removeIcon} = React.useContext(Context)        
     
 
     function handleClick(key) {
@@ -27,9 +27,9 @@ export default function Room() {
     }
 
     function selectRoom(key) {
-        const findRoom = roomsInfo.filter(room => room.id === key)
-        console.log(findRoom[0].price)
-        reserveBookedRoom(key)
+        let booking = bookedRoom.find(booked => booked === key)
+        console.log('bookedroom', booking)
+        !booking ? reserveBookedRoom(key) : removeBookedRoom(key)
     }
 
     function getRooms() {
@@ -38,7 +38,7 @@ export default function Room() {
             return (
                 <div key={room.id} id={room.id} className="room">
                     <h4 className="room-name">{room.name}</h4>
-                    <button className="info-btn" onClick={() => {handleClick(room.id)}}>{!room.displayDescription ? 'Hide' : 'See'} Details</button>
+                    <button className="info-btn" onClick={() => {handleClick(room.id)}}>{!room.displayDescription ? 'See' : 'Hide'} Details</button>
                     <h5 className="room-price">{room.price.toLocaleString("ko-KR", {style: "currency", currency: "KRW"})}</h5>
                     <p className={room.displayDescription ? 'show-room-info' : 'hide-room-info'}>{room.roomDescription}</p>
                     <button className="select-room" onClick={() => {selectRoom(room.id)}}>{booking === room.id ? removeIcon : addIcon}</button>

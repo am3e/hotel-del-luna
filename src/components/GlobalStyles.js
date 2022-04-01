@@ -43,4 +43,12 @@ export const GlobalStyles = createGlobalStyle`
         color: ${({theme}) => theme.submitButtonFont};
     }
 
+    .hotel-title {
+        color: ${({theme}) => theme.hotelTitle};
+    }
+    .hotel-title:hover,
+    .hotel-title:focus {
+        border-bottom: 3px solid goldenrod;
+    }
+
     ` 

@@ -12,10 +12,10 @@ export default function Footer() {
             {theme && <li><Link to="/pricing">Pricing</Link></li>}
             {!theme && <li><Link to="./support">Support</Link></li>}
             {!theme && <li><Link to="./terms">Terms</Link></li>}
-            <li><Link to="./about">About</Link></li>
+            {!theme && <li><Link to="./about">About</Link></li>}
             {theme && <li><Link to="./careers">Careers</Link></li>}
           </ul>
-        <p className="footer">2022 Amalia Reodica</p>
+        <p className="footer">2022 created by Amalia Reodica, based on <a href="https://en.wikipedia.org/wiki/Hotel_del_Luna">Hotel Del Luna</a> <i>2019 Korean TV Drama</i></p>
       </footer>
     )
 }

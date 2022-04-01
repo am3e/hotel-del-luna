@@ -10,8 +10,8 @@
   --clr-lightgreen: rgb(87, 132, 87);
   --clr: rgb(198, 194, 160);
 
-  --ff-primary: 'Noto Serif Display', serif;
-  --ff-secondary: 'Parisienne', cursive;
+  --ff-primary: 'Alice', serif;
+  --ff-secondary: 'Sacramento', cursive;
   --ff-main: 'Unna', serif;
   
   --fw-reg: none;
@@ -38,16 +38,18 @@ body {
   text-align: center;
   min-height: 100vh;
   font-size: var(--fs-body);
+  letter-spacing: 0.015em;
 }
 
 * {
   font-family: var(--ff-main);
 }
 
-h1, h2, h3, h4 { margin: 0 0 0.67em 0; }
-
 h1 {
   font-size: var(--fs-h1);
+  font-family: var(--ff-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 h2 {
@@ -80,20 +82,16 @@ a:focus {
   cursor: pointer;
 }
 
-h1 {
-  font-size: var(--fs-h1);
-}
-
-h2 {
-  font-size: var(--fs-h2);
-}
-
-h3 {
-  font-size: var(--fs-h3);
-}
-
 button {
   font-size: var(--fs-btn);
+}
+
+.staff-title {
+  margin: 0.25em 0 0 0;
+}
+
+.hotel-title {
+  letter-spacing: 0.02em;
 }
 
 /* Reservation Modal Styles */
@@ -165,17 +163,19 @@ button {
   grid-template-rows: auto;
 }
 
-.form input {
-  grid-area: input;
-}
-
+.form input,
 .form textarea {
   grid-area: input;
-
+  font-size: var(--fs-h3);
+  padding: 0.2em;
 }
+
 
 .form label {
   grid-area: label;
+  text-align: left;
+  font-size: var(--fs-h3);
+  padding-bottom: 0.01em;
 }
 
 .cancel-res-btn,
@@ -185,6 +185,7 @@ button {
   padding: 0.3em 0.9em;
   margin: 0.8em 1em;
   border: none;
+  font-size: var(--fs-h3);
 }
 
 .cancel-res-btn {
@@ -224,46 +225,52 @@ button {
 
 /* Navigation Styles */
 nav {
-  margin-top: 5rem;
+  margin-top: 7rem;
 }
 
 .logo {
-  width: 10%;
   height: auto;
   pointer-events: all;
   padding: .5em 0;
   text-align: left;
+  display: flex;
+  align-items: center;
 }
 
 .full-moon {
-  min-width: 15%;
-  max-width: 30px;
-  padding: 0;
+  min-width: 20%;
+  max-width: 3rem;
+  padding: 0 1em 0 0;
 }
+
+
 
 .nav-section {
   display: block;
-  margin-right: 1em;
+  margin: 0 0 2em 0;
   align-items: center;
+
 }
 
 ul {
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   font-size: var(--fs-body);
-  padding: 0;
+  padding: 0 4em;
 }
 
 ul li {
-  margin: 0 .5em;
+  margin: 0 2em;
 }
 
 
 .theme-section {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
   padding: 0 1em;
 }
@@ -426,14 +433,14 @@ span {
 
 /* Main Section */
 .room-display {
-  padding: 1em;
+  padding: 0.25em;
 }
 
 .app {
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   position: relative;
 }
 
@@ -443,7 +450,7 @@ span {
 
 .room {
   display: grid;
-  max-width: 500px;
+  max-width: 700px;
   justify-content: space-evenly;
   align-items: center;
   grid-template-areas: 
@@ -456,6 +463,11 @@ span {
   border-radius: 0.25em;
   padding: 1em 0;
 }
+
+/* .area {
+  display: flex;
+  align-items: flex-start;
+} */
 
 
 .hide-room-info {
@@ -475,17 +487,19 @@ span {
 .room-name {
   grid-area: name;
   text-align: left;
+  margin-left: 1em;
+  padding: 1em 0;
   font-family: var(--ff-secondary);
 }
+
 .info-btn {
   grid-area: showbtn;
   font-size: var(--fs-body-small);
   background-color: var(--clr-darkgreen);
   color: var(--clr-white);
-  padding: 0.15em 0.65em;
-
-
+  padding: 0.85em 0.65em;
 }
+
 .info-btn:hover,
 .info-btn:focus {
   background: var(--clr-accent);  
@@ -517,24 +531,60 @@ span {
   font-weight: bold;
 }
 
-
-.footer {
-  font-size: var(--fs-body-small);
+.main-img {
+  background-size: cover;
 }
 
 
-@media (min-width: 600px) {
+footer {
+  padding: 2rem 0 0 0;
+}
+.footer {
+  font-size: var(--fs-body-small);
+  padding: 2rem 0 0 0;
+}
+
+.footer a {
+  font-size: var(--fs-body-small);
+}
+
+.location {
+  max-width: 100%;
+  margin: 0 auto;
+
+}
+
+
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.staffMember {
+  max-width: 800px;
+  margin: 5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.staffimg {
+  max-width: 100%;
+  margin: 0 1em 0 0;
+}
+
+@media (min-width: 1000px) {
   :root {
     font-size: 18px;
   }
 
   .room {
     display: grid;
-    max-width: 600px;
+    max-width: 700px;
     grid-template-areas: 
       "name showbtn . price selector"
       "info info info info info";
-    grid-template-columns: 30% 15% 10% 20% 10% ;
+    grid-template-columns: 25% 25% 10% 20% 10% ;
     grid-template-rows: auto;
     margin-left: auto;
     margin-right: auto;
@@ -555,6 +605,78 @@ span {
 
   ul {
     flex-direction: row;
+  }
+
+   .other {
+    max-width: 800px;
+    display: grid;
+    place-items: center;
+    grid-template-areas: 
+      "img staffinfo";
+    grid-template-columns: 40% 60%;
+    grid-template-rows: auto;
+    padding: 0.25em 0;
+    border-top: 2px solid goldenrod;  
+  }
+
+  .other:nth-last-child(1) {
+    border-bottom: 2px solid goldenrod; 
+  }
+
+  
+  .staff .img {
+    grid-area: img;
+    align-items: center;
+  }
+  
+  .staffinfo {
+    grid-area: staffinfo;
+  }
+
+  .staffMember {
+    max-width: 800px;
+
+  }
+  
+  nav {
+    margin-top: 0rem;
+    margin: 1.5em 0em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5em;
+  }
+
+  .theme-section {
+    padding: 0;
+    width: 50%;
+    justify-content:flex-start;
+
+  }
+
+  .hotel-title {
+    white-space: nowrap;
+    margin: 0 2em 0 0 ;
+  }
+
+  .nav-section {
+    display: flex;
+    margin: 0;
+  }
+
+  .reserve-button {
+    position: relative;
+    min-width: 1em;
+    max-width: 5em;
+    padding: 1rem;
+
+    border: none;
+    font-size: var(--fs-h2);
+    cursor: pointer;
+    text-transform: uppercase;
+
+    text-decoration: none;
+    z-index: 1;
   }
   
 }
