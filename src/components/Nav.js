@@ -9,13 +9,11 @@ import {Context} from '../Context'
 
 
 export default function Nav() {
-    const {modal, openModal, theme, nights, bookedRoom, resevered} = React.useContext(Context)
-
-    const findOut = !theme && resevered ? true : resevered ? true : false;
+    const {modal, openModal, theme, reserved} = React.useContext(Context)
 
     return (
         <>
-            <nav>
+            <nav className={`${reserved ? 'nav-update' : ''}`}>
                 <div className="theme-section">
                     
                     <Link to="/home" className="logo" ><img className="full-moon" alt="logo" src="./hotel-logo.png" /><span className="hotel-title">Hotel Del Luna</span></Link>
@@ -27,7 +25,7 @@ export default function Nav() {
                     {!theme && <li><Link to="/location">Location</Link></li>}
                     {!theme && <li><Link to="/amenities">Amenities</Link></li>}
                     </ul>
-                    {(!nights && bookedRoom.length === 0 || findOut) && <button 
+                    {!reserved && <button 
                         className="reserve-button" 
                         onClick={openModal}
                         id={"open-modal"}>
@@ -35,7 +33,7 @@ export default function Nav() {
                     </button>}
                 </div>
                         
-
+                {!theme && <div class="scanlines"></div>}
             </nav>
                                 
 

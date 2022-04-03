@@ -21,7 +21,7 @@
   --fs-h1: 2.6rem;
   --fs-h2: 2rem;
   --fs-h3: 1.5rem;
-  --fs-h4: 0.85rem;
+  --fs-h4: 1.2rem;
   --fs-body: 0.85rem;
   --fs-small: 0.45rem;
   --fs-link: 1.6rem;
@@ -91,6 +91,7 @@ button {
 }
 
 .hotel-title {
+  white-space: nowrap;
   letter-spacing: 0.02em;
 }
 
@@ -122,8 +123,6 @@ button {
   margin: 0.5em;
 }
 
-.continue-on-button,
-.confirm-booking-button,
 .pay-button {
   padding: 1.2em 2.8em;
   border: none;
@@ -132,7 +131,7 @@ button {
   cursor: pointer;
   text-transform: uppercase;
   text-decoration: none;
-  margin-bottom: 1em;
+  margin: 1em 0.5em;
 }
 
 .modal {
@@ -195,6 +194,9 @@ button {
   grid-area: submitbutton;
 }
 
+.fill-img {
+  min-width: 100%;
+}
 
 
 .fullpage {
@@ -228,6 +230,10 @@ nav {
   margin-top: 7rem;
 }
 
+.nav-update {
+  margin-top: 2em;
+}
+
 .logo {
   height: auto;
   pointer-events: all;
@@ -252,7 +258,8 @@ nav {
 
 }
 
-ul {
+nav ul,
+footer ul {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
@@ -393,8 +400,11 @@ span {
 
   .carousel .visible {
     display: block;
-    transition: all 0.50s linear;
+    /* transition: all 0.50s linear; */
 
+  }
+  .invisible {
+    display: none;
   }
 
   .carousel .carousel-item img {
@@ -412,28 +422,101 @@ span {
   }
 
   .carousel .carousel-actions button {
-    border-radius: 50px;
-    background-color: var(--clr-accent);
+    background-color: rgba(0, 0, 0, 0);
     color: var(--clr-black);
     border: 0;
     font-size: var(--fs-body);
     font-weight: bold;
     cursor: pointer;
-    width: 20px;
-    height: 20px;
+    width: 5.5rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .carousel-desc {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.55);
+    color: black;
+    top: 10%;
+    left: 35%;
+    transform: translateX(-50%);
+    padding: 1em 2em;
+    z-index: 100;
+    letter-spacing: 0.04em;
+    font-size: var(--fs-h3);
+    border-radius: 15px 0px 15px 0px;
+  }
+
+  .whiteblur {
+    background-image: radial-gradient(circle,
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0.98),
+      rgba(255, 255, 255, 0.96),
+      rgba(255, 255, 255, 0.94),
+      rgba(255, 255, 255, 0.92),
+      rgba(255, 255, 255, 0.90),
+      rgba(255, 255, 255, 0.88),
+      rgba(255, 255, 255, 0.86),
+      rgba(255, 255, 255, 0.84),
+      rgba(255, 255, 255, 0.82),
+      rgba(255, 255, 255, 0.80),
+      rgba(255, 255, 255, 0.78),
+      rgba(255, 255, 255, 0.76),
+      rgba(255, 255, 255, 0.74),
+      rgba(255, 255, 255, 0.72),
+      rgba(255, 255, 255, 0.70),
+      rgba(255, 255, 255, 0.68),
+      rgba(255, 255, 255, 0.66),
+      rgba(255, 255, 255, 0.64),
+      rgba(255, 255, 255, 0.62),
+      rgba(255, 255, 255, 0.60),
+      rgba(255, 255, 255, 0.58),
+      rgba(255, 255, 255, 0.56),
+      rgba(255, 255, 255, 0.54),
+      rgba(255, 255, 255, 0.52),
+      rgba(255, 255, 255, 0.50),
+      rgba(255, 255, 255, 0.48),
+      rgba(255, 255, 255, 0.46),
+      rgba(255, 255, 255, 0.44),
+      rgba(255, 255, 255, 0.42),
+      rgba(255, 255, 255, 0.40),
+      rgba(255, 255, 255, 0.38),
+      rgba(255, 255, 255, 0.36),
+      rgba(255, 255, 255, 0.34),
+      rgba(255, 255, 255, 0.32),
+      rgba(255, 255, 255, 0.30),
+      rgba(255, 255, 255, 0.28),
+      rgba(255, 255, 255, 0.26),
+      rgba(255, 255, 255, 0.24),
+      rgba(255, 255, 255, 0.22),
+      rgba(255, 255, 255, 0.20),
+      rgba(255, 255, 255, 0.18),
+      rgba(255, 255, 255, 0.16),
+      rgba(255, 255, 255, 0.14),
+      rgba(255, 255, 255, 0.12),
+      rgba(255, 255, 255, 0.10),
+      rgba(255, 255, 255, 0.08),
+      rgba(255, 255, 255, 0.06),
+      rgba(255, 255, 255, 0.04),
+      rgba(255, 255, 255, 0.02),
+      rgba(255, 255, 255, 0));
+    border-radius: 50%;
   }
 
   .carousel .carousel-actions button#carousel-button-prev {
-    margin-left: 5px;
+    margin-left: 1.5em;   
   }
 
   .carousel .carousel-actions button#carousel-button-next {
-    margin-right: 5px;   
+    margin-right: 1.5em;
   }
 
 /* Main Section */
 .room-display {
-  padding: 0.25em;
+  padding: 0 2em;
+
 }
 
 .app {
@@ -448,6 +531,22 @@ span {
   margin: 0 4em;
 }
 
+.info {
+  text-align: justify;
+  text-indent: 4em;
+  letter-spacing: 0.05em;
+}
+
+.gold-accent {
+  color: var(--clr-accent);
+  display: inline;
+}
+.terms {
+  width: 50%;
+  text-align: center;
+  margin: 0 auto;
+}
+
 .room {
   display: grid;
   max-width: 700px;
@@ -457,11 +556,12 @@ span {
     "name showbtn price selector"
     "info info info info";
   grid-template-columns: 30% 15% 30% 10% ;
-  margin: 1em 1em 0 1em;
+  margin: 0 auto 1em auto;
   background: var(--clr-lightgreen);
     color: var(--clr-white);
   border-radius: 0.25em;
   padding: 1em 0;
+  text-shadow: 0 0 3px black;
 }
 
 /* .area {
@@ -482,14 +582,16 @@ span {
   font-size: var(--fs-body-min);
   padding: 2em;
   margin: 1em 0 0 0;
+  text-shadow: none;
 }
 
 .room-name {
   grid-area: name;
   text-align: left;
-  margin-left: 1em;
+  margin: 0 0 0 1.5em;
   padding: 1em 0;
   font-family: var(--ff-secondary);
+  font-size: var(--fs-h3);
 }
 
 .info-btn {
@@ -510,15 +612,21 @@ span {
   grid-area: price;
   font-size: var(--fs-h4);
 }
-.select-room {
-  grid-area: selector;
+.select-room,
+.continue-on-button {
   margin-right: 1em;
   border: none;
   background: none;
   padding: 0 1em;
   cursor: pointer;
-  
 }
+
+.room-btn-selectors {
+  grid-area: selector;
+  align-items: space-evenly;
+  display: flex;
+}
+
 .addIcon,
 .removeIcon {
   max-width: 2em;
@@ -526,7 +634,7 @@ span {
 
 .alert {
   text-transform: uppercase;
-  font-size: 0.7rem;
+  font-size: 1.1rem;
   color: var(--clr-strict);
   font-weight: bold;
 }
@@ -554,6 +662,42 @@ footer {
 
 }
 
+.careers {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.careers-card {
+  padding: 4em;
+  background-color: var(--clr-darkgreen);
+  color: white;
+  border-radius: 3px 15px 3px 15px;
+  text-align: left;
+
+}
+
+.careers-card h3,
+.careers-card h4 {
+  margin: 0.5em 0 0.5em 0;
+}
+
+.role-title {
+  color: var(--clr-accent);
+  text-align: center;
+  margin-top: 0;
+  font-family: var(--ff-secondary);
+}
+
+.bullet-points {
+  display: contents;
+  list-style: circle;
+}
+
+.bullet-points li {
+  text-align: left;
+}
+
+
 
 .about {
   display: flex;
@@ -573,10 +717,303 @@ footer {
   margin: 0 1em 0 0;
 }
 
-@media (min-width: 1000px) {
-  :root {
-    font-size: 18px;
+.container {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
+.glitch,
+.glow {
+  color: var(--clr-dull);
+  position: relative;
+  font-size: 6vw;
+  animation: glitch 4s 2s infinite;
+  white-space: nowrap;
+}
+
+.glitch::before {
+  content: attr(data-text);
+  position: absolute;
+  left: -2px;
+  text-shadow: -5px 0 var(--clr-black);
+  overflow: hidden;
+  top: 0;
+  animation: noise-1 3s linear infinite alternate-reverse, glitch 5s 5.05s infinite;
+}
+
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+
+  left: 2px;
+  text-shadow: -5px 0 lightgreen;
+  overflow: hidden;
+  top: 0;
+  animation: noise-2 5s linear infinite alternate-reverse, glitch 5s 5s infinite;
+}
+
+@keyframes glitch {
+  1%{
+    transform: rotateX(10deg) skewX(90deg);
   }
+  2%{
+    transform: rotateX(0deg) skewX(0deg);
+  }
+}
+
+@keyframes noise-1 {
+  3.3333333333% {
+    clip-path: inset(44px 0 51px 0);
+ }
+  6.6666666667% {
+    clip-path: inset(23px 0 74px 0);
+ }
+  10% {
+    clip-path: inset(90px 0 11px 0);
+ }
+  13.3333333333% {
+    clip-path: inset(93px 0 8px 0);
+ }
+  16.6666666667% {
+    clip-path: inset(86px 0 10px 0);
+ }
+  20% {
+    clip-path: inset(14px 0 63px 0);
+ }
+  23.3333333333% {
+    clip-path: inset(31px 0 62px 0);
+ }
+  26.6666666667% {
+    clip-path: inset(35px 0 40px 0);
+ }
+  30% {
+    clip-path: inset(25px 0 52px 0);
+ }
+  33.3333333333% {
+    clip-path: inset(66px 0 25px 0);
+ }
+  36.6666666667% {
+    clip-path: inset(30px 0 61px 0);
+ }
+  40% {
+    clip-path: inset(74px 0 18px 0);
+ }
+  43.3333333333% {
+    clip-path: inset(79px 0 13px 0);
+ }
+  46.6666666667% {
+    clip-path: inset(16px 0 21px 0);
+ }
+  50% {
+    clip-path: inset(81px 0 3px 0);
+ }
+  53.3333333333% {
+    clip-path: inset(19px 0 31px 0);
+ }
+  56.6666666667% {
+    clip-path: inset(41px 0 60px 0);
+ }
+  60% {
+    clip-path: inset(62px 0 18px 0);
+ }
+  63.3333333333% {
+    clip-path: inset(83px 0 6px 0);
+ }
+  66.6666666667% {
+    clip-path: inset(16px 0 45px 0);
+ }
+  70% {
+    clip-path: inset(4px 0 97px 0);
+ }
+  73.3333333333% {
+    clip-path: inset(17px 0 77px 0);
+ }
+  76.6666666667% {
+    clip-path: inset(28px 0 15px 0);
+ }
+  80% {
+    clip-path: inset(70px 0 27px 0);
+ }
+  83.3333333333% {
+    clip-path: inset(38px 0 5px 0);
+ }
+  86.6666666667% {
+    clip-path: inset(14px 0 11px 0);
+ }
+  90% {
+    clip-path: inset(26px 0 39px 0);
+ }
+  93.3333333333% {
+    clip-path: inset(93px 0 2px 0);
+ }
+  96.6666666667% {
+    clip-path: inset(34px 0 45px 0);
+ }
+  100% {
+    clip-path: inset(9px 0 53px 0);
+ }
+}
+@keyframes noise-2 {
+  0% {
+    clip-path: inset(84px 0 14px 0);
+ }
+  3.3333333333% {
+    clip-path: inset(91px 0 10px 0);
+ }
+  6.6666666667% {
+    clip-path: inset(35px 0 27px 0);
+ }
+  10% {
+    clip-path: inset(69px 0 18px 0);
+ }
+  13.3333333333% {
+    clip-path: inset(13px 0 45px 0);
+ }
+  16.6666666667% {
+    clip-path: inset(95px 0 2px 0);
+ }
+  20% {
+    clip-path: inset(25px 0 47px 0);
+ }
+  23.3333333333% {
+    clip-path: inset(4px 0 47px 0);
+ }
+  26.6666666667% {
+    clip-path: inset(24px 0 40px 0);
+ }
+  30% {
+    clip-path: inset(73px 0 22px 0);
+ }
+  33.3333333333% {
+    clip-path: inset(33px 0 19px 0);
+ }
+  36.6666666667% {
+    clip-path: inset(59px 0 37px 0);
+ }
+  40% {
+    clip-path: inset(11px 0 68px 0);
+ }
+  43.3333333333% {
+    clip-path: inset(71px 0 11px 0);
+ }
+  46.6666666667% {
+    clip-path: inset(58px 0 20px 0);
+ }
+  50% {
+    clip-path: inset(40px 0 5px 0);
+ }
+  53.3333333333% {
+    clip-path: inset(6px 0 47px 0);
+ }
+  56.6666666667% {
+    clip-path: inset(71px 0 23px 0);
+ }
+  60% {
+    clip-path: inset(94px 0 2px 0);
+ }
+  63.3333333333% {
+    clip-path: inset(39px 0 40px 0);
+ }
+  66.6666666667% {
+    clip-path: inset(78px 0 17px 0);
+ }
+  70% {
+    clip-path: inset(52px 0 7px 0);
+ }
+  73.3333333333% {
+    clip-path: inset(43px 0 42px 0);
+ }
+  76.6666666667% {
+    clip-path: inset(87px 0 14px 0);
+ }
+  80% {
+    clip-path: inset(77px 0 14px 0);
+ }
+  83.3333333333% {
+    clip-path: inset(87px 0 2px 0);
+ }
+  86.6666666667% {
+    clip-path: inset(8px 0 69px 0);
+ }
+  90% {
+    clip-path: inset(18px 0 46px 0);
+ }
+  93.3333333333% {
+    clip-path: inset(90px 0 3px 0);
+ }
+  96.6666666667% {
+    clip-path: inset(45px 0 42px 0);
+ }
+  100% {
+    clip-path: inset(4px 0 18px 0);
+ }
+}
+
+.scanlines {
+  overflow: hidden;
+  mix-blend-mode: difference;
+  background-color: black;
+}
+
+.scanlines::before {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) .5%,
+    transparent 1%
+  );
+
+  animation: fudge 7s ease-in-out alternate infinite;
+}
+
+
+@keyframes fudge {
+  from {
+    transform: translate(0px, 0px);
+  }
+  to {
+    transform: translate(0px, 2%);
+  }
+}
+
+.glow {
+  text-shadow: 0 0 1000px var(--clr-accent);
+  color: transparent;
+  position: absolute;
+  top: 0;
+}
+
+@keyframes glitch-2 {
+  1%{
+    transform: rotateX(10deg) skewX(70deg);
+  }
+  2%{
+    transform: rotateX(0deg) skewX(0deg);
+  }
+}
+
+@media (max-width: 400px) {
+  :root {
+    font-size: 8px;
+  }
+  .hotel-title {
+    display: none;
+  }
+
+  .carousel-desc {
+    display: none;
+  }
+}
+
+@media (min-width: 1000px) {
 
   .room {
     display: grid;
@@ -586,8 +1023,6 @@ footer {
       "info info info info info";
     grid-template-columns: 25% 25% 10% 20% 10% ;
     grid-template-rows: auto;
-    margin-left: auto;
-    margin-right: auto;
   }
 
   .select-room {
@@ -596,7 +1031,7 @@ footer {
 
   .wrapper {
     max-width: 550px;
-    margin: 10px auto;
+    margin: 0 auto;
   }
   
   .footer {
@@ -616,11 +1051,11 @@ footer {
     grid-template-columns: 40% 60%;
     grid-template-rows: auto;
     padding: 0.25em 0;
-    border-top: 2px solid goldenrod;  
+    border-top: 2px solid var(--clr-accent);  
   }
 
   .other:nth-last-child(1) {
-    border-bottom: 2px solid goldenrod; 
+    border-bottom: 2px solid var(--clr-accent); 
   }
 
   
@@ -655,7 +1090,6 @@ footer {
   }
 
   .hotel-title {
-    white-space: nowrap;
     margin: 0 2em 0 0 ;
   }
 

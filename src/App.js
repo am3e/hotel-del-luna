@@ -11,10 +11,9 @@ import Home from './components/Home'
 
 import Location from './components/ghost/Location'
 import Amenities from './components/ghost/Amenities'
-import Support from './components/ghost/Support'
 import Terms from './components/ghost/Terms'
 import About from './components/ghost/About'
-import Confirmation from './components/ghost/Confirmation'
+import Welcome from './components/ghost/Welcome'
 
 import Pricing from './components/human/Pricing'
 import Payment from './components/human/Payment'
@@ -36,12 +35,11 @@ function App() {
             <Route path="/location" element={<Location />} />
             <Route path="/amenities" element={<Amenities />} />
             <Route path="/pricing" element={<Pricing />} />
-            <Route path="/support" element={<Support />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/about" element={<About />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/booking" element={<Booking />} />
-            <Route path="/welcome" element={<Confirmation />} />
+            <Route path="/welcome" element={<Welcome />} />
             <Route path="/payment" element={<Payment />} />
           </Routes>
         </div>

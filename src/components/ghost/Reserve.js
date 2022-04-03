@@ -28,15 +28,16 @@ function Reserve() {
             </section>
             <section className="form">
                 <label
-                    htmlFor="dateOfDeath"
-                >Date of Death</label>
+                    htmlFor="daysSinceDeath"
+                >Days since Death</label>
                 <input 
                     id="dateOfDeath"
-                    type="date"
-                    name="dateOfDeath"
-                    placeholder="Approximate date of death"
-                    className="dateOfDeath"
-                    value={input.dateOfDeath}
+                    type="number"
+                    min="0"
+                    name="daysSinceDeath"
+                    placeholder="1"
+                    className="daysSinceDeath"
+                    value={input.daysSinceDeath}
                     onChange={handleChange}
                 />
             </section>

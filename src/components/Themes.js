@@ -4,7 +4,7 @@ export const humanTheme = {
     toggleBorder: '#FFF',
     background: 'linear-gradient(#39598A, #79D7ED)',
     linkColor: 'darkgreen',
-    buttonColor: 'darkgreen',
+    buttonColor: '',
     buttonFont: '',
     modalBkgr: 'goldenrod',
     modalFont: 'white',
@@ -14,8 +14,8 @@ export const humanTheme = {
     cancelButtonFont: '',
     submitButton: '',
     submitButtonFont: '',
-    hoverModalBkgd: 'goldenrod',
-    hoverModalFont: 'darkgreen',
+    hoverModalBkgd: '',
+    hoverModalFont: 'black',
     hotelTitle: 'black'
   }
   

@@ -5,7 +5,7 @@ import {useNavigate} from 'react-router-dom'
 const Context = React.createContext()
 
 function ContextProvider({children}) {
-    const [resevered, setReserve] = React.useState(false)
+    const [reserved, setReserve] = React.useState(false)
     const [theme, setTheme] = React.useState(true)
     const [modal, setModal] = React.useState(false)
     const [required, setRequired] = React.useState('')
@@ -17,7 +17,7 @@ function ContextProvider({children}) {
         email: "",
         checkIn: "",
         checkOut: "",
-        dateOfDeath: "",
+        daysSinceDeath: 0,
         lastWishes: "",
     })
     const navigate = useNavigate()
@@ -26,16 +26,27 @@ function ContextProvider({children}) {
     const thisDay = today.split('/')
     const checkToday = `${thisDay[2]}-${thisDay[0].length === 1 ? '0' + thisDay[0] : thisDay[0]}-${thisDay[1].length === 1 ? '0' + thisDay[1] : thisDay[1]}`
     const inputCheckIn = input.checkIn.split("-")
-    let dayIn = inputCheckIn[2]
-    let monthIn = inputCheckIn[1]
-    let yearIn = inputCheckIn[0]
     const inputCheckOut = input.checkOut.split("-")
-    let dayOut = inputCheckOut[2]
-    let monthOut = inputCheckOut[1]
-    let yearOut = inputCheckOut[0]
+    const [yearIn, monthIn, dayIn] = inputCheckIn
+    const [yearOut, monthOut, dayOut] = inputCheckOut
 
     let inDate = new Date (`${monthIn}/${dayIn}/${yearIn}`)
     let outDate = new Date (`${monthOut}/${dayOut}/${yearOut}`)
+
+    let checkInDate = new Date (`${monthIn}/${dayIn}/${yearIn}`).toLocaleDateString(  'en-us',
+        {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+        }
+    )
+    let checkOutDate = new Date (`${monthOut}/${dayOut}/${yearOut}`).toLocaleDateString(  'en-us',
+        {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+        }
+    )
 
     const addIcon = <img className="addIcon" alt="logo" src="./add-circle-line.png"/>
     const removeIcon = <img className="removeIcon" alt="logo" src="./close-circle-fill.png"/>
@@ -112,7 +123,7 @@ function ContextProvider({children}) {
                 setRequired('Please select dates to check availability')
             }
         } else if (!theme) {
-            navigate('/confirmation')
+            navigate('/welcome')
             setModal(false)
             setReserve(true)
         }
@@ -149,7 +160,7 @@ function ContextProvider({children}) {
         <Context.Provider value={{
             modal,
             input,
-            resevered,
+            reserved,
             theme,
             required,
             bookedRoom,
@@ -160,6 +171,8 @@ function ContextProvider({children}) {
             nights,
             addIcon,
             removeIcon,
+            checkInDate, 
+            checkOutDate,
             openModal,
             closeModal,
             handleChange,

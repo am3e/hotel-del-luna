@@ -4,16 +4,20 @@ import {Context} from '../../Context'
 import Room from './Room'
 
 export default function Booking() {    
-    const {input, bookedRoom, nights, confirmBooking} = React.useContext(Context)  
+    const {checkInDate, checkOutDate, nights} = React.useContext(Context)  
     
 
     return (
-        <section className="booking wrapper">
+        <section className="booking">
+
             {
-                nights && <h1>Availablity for {input.checkIn} to {input.checkOut}</h1>
+                nights > 0 && 
+                    <h2>Availablity for {checkInDate} to {checkOutDate}</h2>
+                    
             }
             <Room />
-            {bookedRoom.length > 0 && nights && <button className="continue-on-button" onClick={confirmBooking}>Continue</button>}
+            {/* {bookedRoom.length > 0 && nights && <button className="continue-on-button" onClick={confirmBooking}>Continue</button>} */}
+            <p className="alert">Free Cancellation 24 hours before Check In, after that Cancellation Fee may apply</p>
         </section>
 
     )

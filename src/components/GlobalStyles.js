@@ -24,6 +24,14 @@ export const GlobalStyles = createGlobalStyle`
     #open-modal:hover,
     #open-modal:focus {
         background-color: ${({theme}) => theme.hoverModalBkgd};
+        background-image: radial-gradient(circle,
+        rgba(255, 255, 255, 0.10),
+        rgba(255, 255, 255, 0.08),
+        rgba(255, 255, 255, 0.06),
+        rgba(255, 255, 255, 0.04),
+        rgba(255, 255, 255, 0.02),
+        rgba(255, 255, 255, 0));
+  }
         color: ${({theme}) => theme.hoverModalFont};
         cursor: pointer;
         transition: all 0.50s linear;
