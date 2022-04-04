@@ -1,5 +1,6 @@
 {
   "name": "hotel-del-luna",
+  "homepage": "https://hoteldelluna.am3e.dev/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
