@@ -8,7 +8,7 @@ export default function Room() {
     const roomArray = roomData.data.room
     const [roomsInfo, setRoomsInfo] = React.useState(roomArray)
     const [rooms, setRooms] = React.useState()
-    const {bookedRoom, reserveBookedRoom, removeBookedRoom,addIcon, removeIcon, nights, confirmBooking, modal, openModal} = React.useContext(Context)     
+    const {checkBookedRoom, bookedRoom, reserveBookedRoom, removeBookedRoom,addIcon, removeIcon, nights, confirmBooking, modal, openModal} = React.useContext(Context)     
     
     const continueIcon = <img className="continue" alt="arrow" src="./arrow-right-circle-fill.png"/>
     
@@ -45,8 +45,8 @@ export default function Room() {
                     <p className={room.displayDescription ? 'show-room-info' : 'hide-room-info'}>{room.roomDescription}</p>
                     <div className="room-btn-selectors">
                         <button aria-label="deselect room" className="select-room" onClick={() => {selectRoom(room.id)}}>{booking === room.id ? removeIcon : addIcon}</button>
-                        {(booking === room.id && bookedRoom.length > 0 && nights) ? <button className="continue-on-button" onClick={confirmBooking}>{continueIcon}</button> : ''}
-                        {booking === room.id && bookedRoom.length > 0 && !nights &&
+                        {(booking === room.id && checkBookedRoom > 0 && nights) ? <button className="continue-on-button" onClick={confirmBooking}>{continueIcon}</button> : ''}
+                        {booking === room.id && checkBookedRoom > 0 && !nights &&
                         <button 
                             className="continue-on-button" 
                             onClick={openModal}

@@ -16,7 +16,6 @@ export default function Booking() {
                     
             }
             <Room />
-            {/* {bookedRoom.length > 0 && nights && <button className="continue-on-button" onClick={confirmBooking}>Continue</button>} */}
             <p className="alert">Free Cancellation 24 hours before Check In, after that Cancellation Fee may apply</p>
         </section>
 

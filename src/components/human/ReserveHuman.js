@@ -5,7 +5,7 @@ import {Context} from '../../Context'
 function ReserveHuman() {
     const {input, handleChange, closeModal, submitForm, required, checkToday} = React.useContext(Context)
      
-
+    console.log(checkToday, input)
     return (
 
         <div className="modal" onClick={e => e.stopPropagation()}>

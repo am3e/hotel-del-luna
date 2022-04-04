@@ -5,6 +5,7 @@ import {Context} from '../Context'
 
 export default function CarouselItem() {
     const imagesArray = imagesData.data.images
+    const lengthOfImages = imagesArray.length
 
     const [image, setImage] = React.useState([])
     const [visible, setVisible] = React.useState(0)
@@ -14,7 +15,7 @@ export default function CarouselItem() {
 
     function getImage() {
         const selectImage = imagesArray.find((img, index) => index === visible)
-        const prevImage = imagesArray.find((img, index) => index === visible-1 || imagesArray.length - 2)
+        const prevImage = imagesArray.find((img, index) => index === visible-1 || lengthOfImages - 2)
         const nextImage = imagesArray.find((img, index) => index === visible+1 || 1)
         console.log(selectImage, "select")
         setImage(() => (
@@ -30,11 +31,11 @@ export default function CarouselItem() {
     function prevSlide() {
         setVisible(currentImage => 
             currentImage === 0 ?
-            imagesArray.length - 1 : currentImage - 1)
+            lengthOfImages - 1 : currentImage - 1)
     }
     function nextSlide() {
         setVisible(currentImage => 
-            currentImage === imagesArray.length - 1 ?
+            currentImage === lengthOfImages - 1 ?
              0 : currentImage + 1)
     }
 

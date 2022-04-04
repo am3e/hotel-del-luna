@@ -11,19 +11,19 @@ export default function Payment() {
     const [roomsInfo, setRoomsInfo] = React.useState(roomArray)
     const [rooms, setRooms] = React.useState()
     const [totalAmount, setTotalAmount] = React.useState(0)
-    const {input, bookedRoom, removeBookedRoom, nights, addIcon, removeIcon, openModal, reserved, checkInDate, checkOutDate} = React.useContext(Context)  
+    const {input, checkBookedRoom, bookedRoom, removeBookedRoom, nights, addIcon, removeIcon, openModal, reserved, checkInDate, checkOutDate} = React.useContext(Context)  
     const [buttonText, setButtonText] = React.useState('Confirm Reservation')
     const [disableButton, setDisableButton] = React.useState(false)
     const [bookingComplete, setBookingComplete]  = React.useState(false)   
     function finalize() {
         setButtonText(`Processing payment of ${totalAmount}`)
-        if (bookedRoom.length > 0) {setDisableButton(true)}
+        if (checkBookedRoom > 0) {setDisableButton(true)}
         setTimeout(() => {
             console.log("!")
             bookedRoom.map(room => removeBookedRoom(room))
             setBookingComplete(true)
         }, 3000)
-        if (bookedRoom.length === 0) setDisableButton(false)
+        if (checkBookedRoom === 0) setDisableButton(false)
     }
     
 
@@ -62,7 +62,7 @@ export default function Payment() {
         <section className="payment wrapper">
             <h1>Payment</h1>
             {rooms}
-            {bookedRoom.length > 0 && nights && <h2>Total Amount: {totalAmount} for {nights} night{nights !== 1 && 's'}</h2>}
+            {checkBookedRoom > 0 && nights && <h2>Total Amount: {totalAmount} for {nights} night{nights !== 1 && 's'}</h2>}
             {!disableButton && <button 
                         disabled={disableButton}
                         className="pay-button" 
@@ -70,7 +70,7 @@ export default function Payment() {
                         id={"open-modal"}>
                         Change Booking
                     </button>}
-            {bookedRoom.length > 0 && nights && 
+            {checkBookedRoom > 0 && nights && 
                 <button 
                     disabled={disableButton}
                     className="pay-button"

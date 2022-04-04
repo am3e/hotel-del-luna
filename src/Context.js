@@ -21,10 +21,18 @@ function ContextProvider({children}) {
         lastWishes: "",
     })
     const navigate = useNavigate()
+    const checkBookedRoom = bookedRoom.length
     const todayFull = new Date()
-    const today = todayFull.toLocaleDateString()
+    const today = todayFull.toLocaleDateString(
+        'en-us',
+        {
+            month: '2-digit',
+            day: '2-digit',
+            year: 'numeric'
+        }
+    )
     const thisDay = today.split('/')
-    const checkToday = `${thisDay[2]}-${thisDay[0].length === 1 ? '0' + thisDay[0] : thisDay[0]}-${thisDay[1].length === 1 ? '0' + thisDay[1] : thisDay[1]}`
+    const checkToday = `${thisDay[2]}-${thisDay[0]}-${thisDay[1]}`
     const inputCheckIn = input.checkIn.split("-")
     const inputCheckOut = input.checkOut.split("-")
     const [yearIn, monthIn, dayIn] = inputCheckIn
@@ -105,14 +113,14 @@ function ContextProvider({children}) {
                         checkOut: ''
                     }))
                 }
-                if (nights && bookedRoom.length === 0) {
+                if (nights && checkBookedRoom === 0) {
                     console.log("cho")
                     setRequired('')
                     setReserve(true)
                     navigate('/booking')
                     setModal(false)
                 }
-                if (nights && bookedRoom.length > 0) {
+                if (nights && checkBookedRoom > 0) {
                     console.log("see")
                     setRequired('')
                     setReserve(true)
@@ -160,6 +168,7 @@ function ContextProvider({children}) {
         <Context.Provider value={{
             modal,
             input,
+            checkBookedRoom,
             reserved,
             theme,
             required,
