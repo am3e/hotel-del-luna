@@ -14,7 +14,7 @@ export default function Footer() {
             {!theme && <li><Link to="./about">About</Link></li>}
             {theme && <li><Link to="./careers">Careers</Link></li>}
           </ul>
-        <p className="footer">2022 created by Amalia Reodica, based on <a href="https://en.wikipedia.org/wiki/Hotel_del_Luna">Hotel Del Luna</a> <i>2019 Korean TV Drama</i></p>
+        <p className="footer">2022 created by <a href="https://am3e.dev/">Amalia Reodica</a>, based on <a href="https://en.wikipedia.org/wiki/Hotel_del_Luna">Hotel Del Luna</a> <i>2019 Korean TV Drama</i></p>
       </footer>
     )
 }
